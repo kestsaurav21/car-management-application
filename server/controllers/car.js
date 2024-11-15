@@ -24,17 +24,28 @@ const addCar = async (req, res) => {
       tags: tags ? tags.split(",") : [], // Convert tags string to array
     });
 
-
     await newCar.save();
-    res.status(200).json({ message: 'Car created with images', car: newCar });
-
+    res.status(200).json({ message: "Car created with images", car: newCar });
   } catch (error) {
     console.log("ROUTE: /car/add - ", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };
 
+const getCars = async (req, res) => {
+  try {
+    const carList = await Car.find({ userId: req.user.userId });
+
+    return res.status(200).json({
+      cars: carList,
+    });
+  } catch (error) {
+    console.log("ROUTE: /car/list - ", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
 
 module.exports = {
-    addCar
-}
+  addCar,
+  getCars,
+};
