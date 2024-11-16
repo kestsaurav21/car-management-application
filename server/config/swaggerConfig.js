@@ -30,6 +30,7 @@ const swaggerDefinition = {
       description: 'Development server',
     },
   ],
+  apis: ["src/**/*.js"],
 };
 
 // Options for the swagger docs
