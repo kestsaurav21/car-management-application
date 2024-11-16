@@ -1,9 +1,7 @@
 const express = require('express');
 const upload = require('../config/uploadConfig');
-const { addCar, getCars } = require('../controllers/car');
+const { addCar, getCars, searchCar, updateCarDetails, deleteCar } = require('../controllers/car');
 const authenticate = require('../middlewares/authMiddleware');
-
-
 const router = express.Router();
 
 //Route -> Add a car
@@ -60,24 +58,5 @@ const router = express.Router();
  *         description: Server error
  */
 router.post('/car/add', authenticate, upload.array('images', 10), addCar);
-
-
-/**
- * @openapi
- * /service/car/list:
- *   get:
- *     summary: Fetches all car details of a user
- *     description: Endpoint to get all car details of a user
- *     tags:
- *       - Car
- *     responses:
- *       200:
- *         description: Car list
- *       401:
- *         description: Unauthorized
- *       500:
- *         description: Server error
- */
-router.get('/car/list', authenticate, getCars)
 
 module.exports = router;
