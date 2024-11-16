@@ -1,22 +1,21 @@
-// config/swaggerConfig.js
 require("dotenv").config();
 const swaggerJSDoc = require('swagger-jsdoc');
 
-// Swagger definition
 const swaggerDefinition = {
-  openapi: '3.0.0',
+  swagger: '2.0', // Specifies Swagger (OpenAPI 2.0)
   info: {
     title: 'Car Management API', // API title
     version: '1.0.0', // API version
     description: 'API documentation for the Car Management Application', // Short description
   },
-  components: {
-    securitySchemes: {
-      BearerAuth: {
-        type: 'http',
-        scheme: 'bearer',
-        bearerFormat: 'JWT',
-      },
+  host: process.env.SERVER_URL, // Host URL of your API server (without protocol)
+  basePath: '/', // Base path for the API
+  schemes: ['http', 'https'], // Protocols supported (you can adjust as needed)
+  securityDefinitions: {
+    BearerAuth: {
+      type: 'apiKey', // Use 'apiKey' for OpenAPI 2.0
+      name: 'Authorization', // Header name for authentication
+      in: 'header', // Location of the API key (in header)
     },
   },
   security: [
@@ -24,13 +23,6 @@ const swaggerDefinition = {
       BearerAuth: [],
     },
   ],
-  servers: [
-    {
-      url: `${process.env.SERVER_URL}`, // URL of your API server
-      description: 'Development server',
-    },
-  ],
-  apis: ["src/**/*.js"],
 };
 
 // Options for the swagger docs

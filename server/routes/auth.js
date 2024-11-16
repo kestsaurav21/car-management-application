@@ -3,38 +3,40 @@ const router = express.Router();
 const { Login, Signup } = require("../controllers/auth");
 
 /**
- * @openapi
+ * @swagger
  * /auth/user/signup:
  *   post:
  *     summary: Create a new user
  *     tags:
  *       - User
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - fullname
- *               - username
- *               - email
- *               - password
- *             properties:
- *               fullname:
- *                 type: string
- *                 example: john_doe
- *               username:
- *                 type: string
- *                 example: john_doe
- *               email:
- *                 type: string
- *                 format: email
- *                 example: john@example.com
- *               password:
- *                 type: string
- *                 format: password
- *                 example: strongpassword123
+ *     consumes:
+ *       - application/json
+ *     parameters:
+ *       - in: body
+ *         name: user
+ *         description: The user details to create a new account
+ *         schema:
+ *           type: object
+ *           required:
+ *             - fullname
+ *             - username
+ *             - email
+ *             - password
+ *           properties:
+ *             fullname:
+ *               type: string
+ *               example: john_doe
+ *             username:
+ *               type: string
+ *               example: john_doe
+ *             email:
+ *               type: string
+ *               format: email
+ *               example: john@example.com
+ *             password:
+ *               type: string
+ *               format: password
+ *               example: strongpassword123
  *     responses:
  *       200:
  *         description: The user was successfully created
@@ -46,29 +48,31 @@ const { Login, Signup } = require("../controllers/auth");
 router.post("/user/signup", Signup);
 
 /**
- * @openapi
+ * @swagger
  * /auth/user/login:
  *   post:
  *     summary: Login user
  *     tags:
  *       - User
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - userId
- *               - password
- *             properties:
- *               userId:
- *                 type: string
- *                 example: john_doe
- *               password:
- *                 type: string
- *                 format: password
- *                 example: strongpassword123
+ *     consumes:
+ *       - application/json
+ *     parameters:
+ *       - in: body
+ *         name: credentials
+ *         description: The user credentials for login
+ *         schema:
+ *           type: object
+ *           required:
+ *             - userId
+ *             - password
+ *           properties:
+ *             userId:
+ *               type: string
+ *               example: john_doe
+ *             password:
+ *               type: string
+ *               format: password
+ *               example: strongpassword123
  *     responses:
  *       200:
  *         description: Login success
