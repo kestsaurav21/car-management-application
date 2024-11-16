@@ -4,7 +4,7 @@ const Car = require("../models/Car");
 const addCar = async (req, res) => {
   try {
     const { company, model, description, tags } = req.body;
-
+    
     // Check if files are uploaded
     if (!req.files || req.files.length === 0) {
       return res.status(400).json({ error: "No images uploaded" });
