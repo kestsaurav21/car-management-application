@@ -18,7 +18,7 @@ app.use('/api/home', require('./routes/welcome'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/service', require('./routes/car'));
 
-app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
 const PORT = 5005
