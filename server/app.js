@@ -14,11 +14,11 @@ mongoose.connect(process.env.MONGO_URI).then(() => console.log('MongoDB connecte
 
 
 
-app.use('/api/home', require('./routes/welcome'));
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/service', require('./routes/car'));
+app.use('/', require('./routes/welcome'));
+app.use('/auth', require('./routes/auth'));
+app.use('/service', require('./routes/car'));
 
-app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
 const PORT = 5005

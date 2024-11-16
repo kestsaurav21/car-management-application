@@ -3,7 +3,7 @@ const router = express.Router();
 
 /**
  * @openapi
- * /home:
+ * /:
  *   get:
  *     description: Welcome to Cars Server!
  *     responses:

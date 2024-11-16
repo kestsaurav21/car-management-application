@@ -26,7 +26,7 @@ const swaggerDefinition = {
   ],
   servers: [
     {
-      url: `${process.env.SERVER_URL}/api`, // URL of your API server
+      url: `${process.env.SERVER_URL}`, // URL of your API server
       description: 'Development server',
     },
   ],
